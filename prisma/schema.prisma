@@ -1,11 +1,68 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator typegraphql {
+  provider = "typegraphql-prisma"
+}
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-generator client {
-  provider = "prisma-client-js"
+model Match {
+  id             Int      @id @default(autoincrement())
+  matchResult    Int?
+  screenshotPath String?  @db.VarChar(255)
+  teamId1        Int?
+  teamId2        Int?
+  createdAt      DateTime @db.Timestamptz(6)
+  updatedAt      DateTime @db.Timestamptz(6)
+  Team1          Team?    @relation("MatchTeam1", fields: [teamId1], references: [id])
+  Team2          Team?    @relation("MatchTeam2", fields: [teamId2], references: [id])
+}
+
+model PlayerH {
+  id         Int      @id @default(autoincrement())
+  playerId   Int?
+  skillLevel Float?
+  userTag    String?  @db.VarChar(255)
+  createdAt  DateTime @db.Timestamptz(6)
+  updatedAt  DateTime @db.Timestamptz(6)
+  Players    Players? @relation(fields: [playerId], references: [id])
+  Team1      Team[]   @relation("TeamPlayerH1")
+  Team2      Team[]   @relation("TeamPlayerH2")
+  Team3      Team[]   @relation("TeamPlayerH3")
+  Team4      Team[]   @relation("TeamPlayerH4")
+  Team5      Team[]   @relation("TeamPlayerH5")
+}
+
+model Players {
+  id         Int       @id @default(autoincrement())
+  userId     String?   @db.VarChar(255)
+  skillLevel Float?
+  userTag    String?   @db.VarChar(255)
+  createdAt  DateTime  @db.Timestamptz(6)
+  updatedAt  DateTime  @db.Timestamptz(6)
+  PlayerH    PlayerH[]
+}
+
+model Team {
+  id        Int      @id @default(autoincrement())
+  teamName  String?  @db.VarChar(255)
+  playerId1 Int?
+  playerId2 Int?
+  playerId3 Int?
+  playerId4 Int?
+  playerId5 Int?
+  createdAt DateTime @db.Timestamptz(6)
+  updatedAt DateTime @db.Timestamptz(6)
+  PlayerH1  PlayerH? @relation("TeamPlayerH1", fields: [playerId1], references: [id])
+  PlayerH2  PlayerH? @relation("TeamPlayerH2", fields: [playerId2], references: [id])
+  PlayerH3  PlayerH? @relation("TeamPlayerH3", fields: [playerId3], references: [id])
+  PlayerH4  PlayerH? @relation("TeamPlayerH4", fields: [playerId4], references: [id])
+  PlayerH5  PlayerH? @relation("TeamPlayerH5", fields: [playerId5], references: [id])
+  Match1    Match[]  @relation("MatchTeam1")
+  Match2    Match[]  @relation("MatchTeam2")
 }
