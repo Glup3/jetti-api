@@ -1,15 +1,58 @@
 import express from 'express';
-import { resolvers } from '@generated/type-graphql';
 import { buildSchema } from 'type-graphql';
 import { ApolloServer } from 'apollo-server-express';
 import { PrismaClient } from '@prisma/client';
+import {
+  MatchRelationsResolver,
+  FindUniqueMatchResolver,
+  FindManyMatchResolver,
+  AggregateMatchResolver,
+  // CreateMatchResolver,
+  // UpdateMatchResolver,
+  // DeleteMatchResolver,
+  TeamRelationsResolver,
+  FindUniqueTeamResolver,
+  FindManyTeamResolver,
+  // CreateTeamResolver,
+  // UpdateTeamResolver,
+  // DeleteTeamResolver,
+  PlayersRelationsResolver,
+  FindUniquePlayersResolver,
+  FindManyPlayersResolver,
+  // CreatePlayersResolver,
+  // UpdatePlayersResolver,
+  // DeletePlayersResolver,
+} from '@generated/type-graphql';
 
 export async function createServer() {
   const server = express();
   const prisma = new PrismaClient();
 
   const schema = await buildSchema({
-    resolvers,
+    resolvers: [
+      // Match
+      MatchRelationsResolver,
+      FindManyMatchResolver,
+      FindUniqueMatchResolver,
+      AggregateMatchResolver,
+      // CreateMatchResolver,
+      // UpdateMatchResolver,
+      // DeleteMatchResolver,
+      // Team
+      TeamRelationsResolver,
+      FindUniqueTeamResolver,
+      FindManyTeamResolver,
+      // CreateTeamResolver,
+      // UpdateTeamResolver,
+      // DeleteTeamResolver,
+      // Player
+      PlayersRelationsResolver,
+      FindUniquePlayersResolver,
+      FindManyPlayersResolver,
+      // CreatePlayersResolver,
+      // UpdatePlayersResolver,
+      // DeletePlayersResolver,
+    ],
     validate: false,
   });
 
