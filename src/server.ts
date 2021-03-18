@@ -22,6 +22,9 @@ import {
   // CreatePlayersResolver,
   // UpdatePlayersResolver,
   // DeletePlayersResolver,
+  PlayerHRelationsResolver,
+  FindUniquePlayerHResolver,
+  FindManyPlayerHResolver,
 } from '@generated/type-graphql';
 
 export async function createServer() {
@@ -52,6 +55,10 @@ export async function createServer() {
       // CreatePlayersResolver,
       // UpdatePlayersResolver,
       // DeletePlayersResolver,
+      // PlayerH
+      PlayerHRelationsResolver,
+      FindUniquePlayerHResolver,
+      FindManyPlayerHResolver,
     ],
     validate: false,
   });
