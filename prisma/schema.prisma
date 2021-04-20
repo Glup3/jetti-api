@@ -43,8 +43,8 @@ model Players {
   userId     String?   @db.VarChar(255)
   skillLevel Float?
   userTag    String?   @db.VarChar(255)
-  createdAt  DateTime  @db.Timestamptz(6)
-  updatedAt  DateTime  @db.Timestamptz(6)
+  createdAt  DateTime  @default(now()) @db.Timestamptz(6)
+  updatedAt  DateTime  @updatedAt @db.Timestamptz(6)
   PlayerH    PlayerH[]
 }
 

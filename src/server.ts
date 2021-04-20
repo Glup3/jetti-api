@@ -19,19 +19,33 @@ import {
   PlayersRelationsResolver,
   FindUniquePlayersResolver,
   FindManyPlayersResolver,
-  // CreatePlayersResolver,
+  CreatePlayersResolver,
   // UpdatePlayersResolver,
   // DeletePlayersResolver,
   PlayerHRelationsResolver,
   FindUniquePlayerHResolver,
   FindManyPlayerHResolver,
+  ResolversEnhanceMap,
+  applyResolversEnhanceMap,
 } from '@generated/type-graphql';
+import { Authorized } from 'type-graphql';
+import { customAuthChecker } from './auth';
+import { CustomContext } from './customContext';
 
 export async function createServer() {
   const server = express();
   const prisma = new PrismaClient();
 
+  const resolversEnhanceMap: ResolversEnhanceMap = {
+    Players: {
+      createPlayers: [Authorized()],
+    },
+  };
+
+  applyResolversEnhanceMap(resolversEnhanceMap);
+
   const schema = await buildSchema({
+    authChecker: customAuthChecker,
     resolvers: [
       // Match
       MatchRelationsResolver,
@@ -52,7 +66,7 @@ export async function createServer() {
       PlayersRelationsResolver,
       FindUniquePlayersResolver,
       FindManyPlayersResolver,
-      // CreatePlayersResolver,
+      CreatePlayersResolver,
       // UpdatePlayersResolver,
       // DeletePlayersResolver,
       // PlayerH
@@ -67,7 +81,14 @@ export async function createServer() {
     schema,
     playground: true,
     introspection: true,
-    context: () => ({ prisma }),
+    context: (ctx): CustomContext => {
+      const context: CustomContext = {
+        serverContext: ctx,
+        prismaContext: prisma,
+      };
+
+      return context;
+    },
   });
 
   apolloServer.applyMiddleware({ app: server });
