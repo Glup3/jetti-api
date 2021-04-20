@@ -15,6 +15,7 @@ model Match {
   id             Int      @id @default(autoincrement())
   matchResult    Int?
   screenshotPath String?  @db.VarChar(255)
+  map            Map?
   teamId1        Int?
   teamId2        Int?
   createdAt      DateTime @default(now()) @db.Timestamptz(6)
@@ -66,4 +67,12 @@ model Team {
   PlayerH5  PlayerH? @relation("TeamPlayerH5", fields: [playerId5], references: [id])
   Match1    Match[]  @relation("MatchTeam1")
   Match2    Match[]  @relation("MatchTeam2")
+}
+
+enum Map {
+  BIND
+  SPLIT
+  HAVEN
+  ASCENT
+  ICEBOX
 }
