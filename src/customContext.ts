@@ -3,5 +3,5 @@ import { ExpressContext } from 'apollo-server-express';
 
 export interface CustomContext {
   serverContext: ExpressContext;
-  prismaContext: PrismaClient;
+  prisma: PrismaClient;
 }

@@ -16,12 +16,12 @@ import {
   // CreateTeamResolver,
   // UpdateTeamResolver,
   // DeleteTeamResolver,
-  PlayersRelationsResolver,
-  FindUniquePlayersResolver,
-  FindManyPlayersResolver,
-  CreatePlayersResolver,
-  // UpdatePlayersResolver,
-  // DeletePlayersResolver,
+  PlayerRelationsResolver,
+  FindUniquePlayerResolver,
+  FindManyPlayerResolver,
+  CreatePlayerResolver,
+  UpdatePlayerResolver,
+  DeletePlayerResolver,
   PlayerHRelationsResolver,
   FindUniquePlayerHResolver,
   FindManyPlayerHResolver,
@@ -37,8 +37,10 @@ export async function createServer() {
   const prisma = new PrismaClient();
 
   const resolversEnhanceMap: ResolversEnhanceMap = {
-    Players: {
-      createPlayers: [Authorized()],
+    Player: {
+      createPlayer: [Authorized()],
+      deletePlayer: [Authorized()],
+      updatePlayer: [Authorized()],
     },
   };
 
@@ -63,12 +65,12 @@ export async function createServer() {
       // UpdateTeamResolver,
       // DeleteTeamResolver,
       // Player
-      PlayersRelationsResolver,
-      FindUniquePlayersResolver,
-      FindManyPlayersResolver,
-      CreatePlayersResolver,
-      // UpdatePlayersResolver,
-      // DeletePlayersResolver,
+      PlayerRelationsResolver,
+      FindUniquePlayerResolver,
+      FindManyPlayerResolver,
+      CreatePlayerResolver,
+      UpdatePlayerResolver,
+      DeletePlayerResolver,
       // PlayerH
       PlayerHRelationsResolver,
       FindUniquePlayerHResolver,
@@ -84,7 +86,7 @@ export async function createServer() {
     context: (ctx): CustomContext => {
       const context: CustomContext = {
         serverContext: ctx,
-        prismaContext: prisma,
+        prisma: prisma,
       };
 
       return context;
