@@ -1,0 +1,86 @@
+//// ------------------------------------------------------
+//// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+//// ------------------------------------------------------
+
+Table Match {
+  id Int [pk, increment]
+  matchResult Int
+  screenshotPath String
+  map Map
+  teamId1 Int
+  teamId2 Int
+  createdAt DateTime [default: `now()`, not null]
+  updatedAt DateTime [not null]
+  Team1 Team
+  Team2 Team
+}
+
+Table PlayerH {
+  id Int [pk, increment]
+  playerId Int
+  skillLevel Float
+  userTag String
+  createdAt DateTime [default: `now()`, not null]
+  updatedAt DateTime [not null]
+  Player Players
+  Team1 Team [not null]
+  Team2 Team [not null]
+  Team3 Team [not null]
+  Team4 Team [not null]
+  Team5 Team [not null]
+}
+
+Table Players {
+  id Int [pk, increment]
+  userId String [unique]
+  skillLevel Float
+  userTag String
+  createdAt DateTime [default: `now()`, not null]
+  updatedAt DateTime [not null]
+  PlayerH PlayerH [not null]
+
+  Note: '@@TypeGraphQL.type(name: "Player")'
+}
+
+Table Team {
+  id Int [pk, increment]
+  teamName String
+  playerId1 Int
+  playerId2 Int
+  playerId3 Int
+  playerId4 Int
+  playerId5 Int
+  createdAt DateTime [default: `now()`, not null]
+  updatedAt DateTime [not null]
+  PlayerH1 PlayerH
+  PlayerH2 PlayerH
+  PlayerH3 PlayerH
+  PlayerH4 PlayerH
+  PlayerH5 PlayerH
+  Match1 Match [not null]
+  Match2 Match [not null]
+}
+
+Enum Map {
+  BIND
+  SPLIT
+  HAVEN
+  ASCENT
+  ICEBOX
+}
+
+Ref: Match.teamId1 > Team.id
+
+Ref: Match.teamId2 > Team.id
+
+Ref: PlayerH.playerId > Players.id
+
+Ref: Team.playerId1 > PlayerH.id
+
+Ref: Team.playerId2 > PlayerH.id
+
+Ref: Team.playerId3 > PlayerH.id
+
+Ref: Team.playerId4 > PlayerH.id
+
+Ref: Team.playerId5 > PlayerH.id
