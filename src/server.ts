@@ -25,6 +25,7 @@ import {
   PlayerHRelationsResolver,
   FindUniquePlayerHResolver,
   FindManyPlayerHResolver,
+  UpdatePlayerHResolver,
   ResolversEnhanceMap,
   applyResolversEnhanceMap,
 } from '@generated/type-graphql';
@@ -51,6 +52,9 @@ export async function createServer() {
       createTeam: [Authorized()],
       updateTeam: [Authorized()],
       deleteTeam: [Authorized()],
+    },
+    PlayerH: {
+      updatePlayerH: [Authorized()],
     },
   };
 
@@ -85,6 +89,7 @@ export async function createServer() {
       PlayerHRelationsResolver,
       FindUniquePlayerHResolver,
       FindManyPlayerHResolver,
+      UpdatePlayerHResolver,
     ],
     validate: false,
   });

@@ -10,60 +10,90 @@ async function main() {
         userId: '182183273259974656',
         userTag: 'Alice#4433',
         skillLevel: 3,
+        favoriteMap: 'BIND',
+        imageUrl:
+          'https://cdn.discordapp.com/avatars/215409398883811329/4ab74ae807fcc564b59a2e56ab3a01c8.webp?size=2048',
       },
       {
         id: 501,
         userId: '182283273259974656',
         userTag: 'Bob#1253',
         skillLevel: 1,
+        favoriteMap: 'ASCENT',
+        imageUrl:
+          'https://cdn.discordapp.com/avatars/215409398883811329/4ab74ae807fcc564b59a2e56ab3a01c8.webp?size=2048',
       },
       {
         id: 502,
         userId: '182383273259974656',
         userTag: 'Chami#9371',
         skillLevel: 2,
+        favoriteMap: 'SPLIT',
+        imageUrl:
+          'https://cdn.discordapp.com/avatars/215409398883811329/4ab74ae807fcc564b59a2e56ab3a01c8.webp?size=2048',
       },
       {
         id: 503,
         userId: '182483273259974656',
         userTag: 'Dandilo#5532',
         skillLevel: 1,
+        favoriteMap: 'BIND',
+        imageUrl:
+          'https://cdn.discordapp.com/avatars/215409398883811329/4ab74ae807fcc564b59a2e56ab3a01c8.webp?size=2048',
       },
       {
         id: 504,
         userId: '182583273259974656',
         userTag: 'Emiru#1123',
         skillLevel: 7,
+        favoriteMap: 'ICEBOX',
+        imageUrl:
+          'https://cdn.discordapp.com/avatars/215409398883811329/4ab74ae807fcc564b59a2e56ab3a01c8.webp?size=2048',
       },
       {
         id: 505,
         userId: '182683273259974656',
         userTag: 'FireFighther#8323',
         skillLevel: 4,
+        favoriteMap: 'ASCENT',
+        imageUrl:
+          'https://cdn.discordapp.com/avatars/215409398883811329/4ab74ae807fcc564b59a2e56ab3a01c8.webp?size=2048',
       },
       {
         id: 506,
         userId: '182783273259974656',
         userTag: 'Gidi#0901',
         skillLevel: 8,
+        favoriteMap: 'SPLIT',
+        imageUrl:
+          'https://cdn.discordapp.com/avatars/215409398883811329/4ab74ae807fcc564b59a2e56ab3a01c8.webp?size=2048',
       },
       {
         id: 507,
         userId: '182883273259974656',
         userTag: 'HellaNice#1111',
         skillLevel: 4,
+        favoriteMap: 'SPLIT',
+        imageUrl:
+          'https://cdn.discordapp.com/avatars/215409398883811329/4ab74ae807fcc564b59a2e56ab3a01c8.webp?size=2048',
       },
       {
         id: 508,
         userId: '182983273259974656',
         userTag: 'IKennMiAus#7437',
         skillLevel: 8,
+        favoriteMap: 'BIND',
+        imageUrl:
+          'https://cdn.discordapp.com/avatars/215409398883811329/4ab74ae807fcc564b59a2e56ab3a01c8.webp?size=2048',
       },
       {
         id: 509,
         userId: '183183273259474656',
         userTag: 'Jaguar#6666',
         skillLevel: 2,
+        favoriteMap: 'ICEBOX',
+        imageUrl:
+          'https://cdn.discordapp.com/avatars/215409398883811329/4ab74ae807fcc564b59a2e56ab3a01c8.webp?size=2048',
       },
     ],
   });
@@ -336,7 +366,7 @@ async function main() {
       {
         id: 602,
         map: 'ASCENT',
-        screenshotPath: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png',
+        screenshotPath: null,
         matchResult: 2,
         teamId1: 204,
         teamId2: 205,

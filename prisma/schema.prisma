@@ -45,13 +45,15 @@ model PlayerH {
 
 /// @@TypeGraphQL.type(name: "Player")
 model Players {
-  id         Int       @id @default(autoincrement())
-  userId     String?   @unique @db.VarChar(255)
-  skillLevel Float?
-  userTag    String?   @db.VarChar(255)
-  createdAt  DateTime  @default(now()) @db.Timestamptz(6)
-  updatedAt  DateTime  @updatedAt @db.Timestamptz(6)
-  PlayerH    PlayerH[]
+  id          Int       @id @default(autoincrement())
+  userId      String?   @unique @db.VarChar(255)
+  skillLevel  Float?
+  userTag     String?   @db.VarChar(255)
+  favoriteMap Map?      @default(ASCENT)
+  imageUrl    String?
+  createdAt   DateTime  @default(now()) @db.Timestamptz(6)
+  updatedAt   DateTime  @updatedAt @db.Timestamptz(6)
+  PlayerH     PlayerH[]
 }
 
 model Team {
@@ -79,4 +81,5 @@ enum Map {
   HAVEN
   ASCENT
   ICEBOX
+  BREEZE
 }

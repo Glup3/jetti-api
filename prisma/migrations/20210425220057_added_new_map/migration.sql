@@ -1,0 +1,2 @@
+-- AlterEnum
+ALTER TYPE "Map" ADD VALUE 'BREEZE';
